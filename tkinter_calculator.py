@@ -2,6 +2,7 @@
 Python GUI Basic Operation Calculator
 """
 
+from ast import operator
 from tkinter import *
 
 calculatorWindow = Tk() # create windows widget
@@ -19,23 +20,52 @@ def clearButton():
 def addButton():
     number1 = resultBox.get()
     global getNumber1
+    global mathOperator
+    mathOperator = "addition"
+    getNumber1 = int(number1)
+    resultBox.delete(0, END)
+
+def subtractButton():
+    number1 = resultBox.get()
+    global getNumber1
+    global mathOperator
+    mathOperator = "subtraction"
+    getNumber1 = int(number1)
+    resultBox.delete(0, END)
+    
+def multipleButton():
+    number1 = resultBox.get()
+    global getNumber1
+    global mathOperator
+    mathOperator = "multiplication"
+    getNumber1 = int(number1)
+    resultBox.delete(0, END)
+
+def divideButton():
+    number1 = resultBox.get()
+    global getNumber1
+    global mathOperator
+    mathOperator = "division"
     getNumber1 = int(number1)
     resultBox.delete(0, END)
 
 def equalButton():
     number2 = resultBox.get()
-    result = getNumber1 + int(number2)
     resultBox.delete(0, END)
-    resultBox.insert(0, result)
     
-def subtractButton():
-    pass
-
-def multipleButton():
-    pass
-
-def divideButton():
-    pass
+    
+    if (mathOperator == "addition"):
+        result = getNumber1 + int(number2)
+        resultBox.insert(0, result)
+    elif (mathOperator == "subtraction"):
+        result = getNumber1 - int(number2)
+        resultBox.insert(0, result)
+    elif (mathOperator == "multiplication"):
+        result = getNumber1 * int(number2)
+        resultBox.insert(0, result)
+    elif (mathOperator == "division"):
+        result = getNumber1 / int(number2)
+        resultBox.insert(0, result)
 
 # entry widget section
 resultBox = Entry(calculatorWindow, width=40, borderwidth=6)
@@ -59,7 +89,7 @@ buttonEqual = Button(calculatorWindow, text="=", padx=90, pady=20, command=equal
 buttonAdd = Button(calculatorWindow, text="+", padx=40, pady=20, command=addButton)
 buttonSubtract = Button(calculatorWindow, text="-", padx=40, pady=20, command=subtractButton)
 buttonMultiple = Button(calculatorWindow, text="*", padx=40, pady=20, command=multipleButton)
-buttonDivide = Button(calculatorWindow, text="/", padx=40, pady=20, command=addButton)
+buttonDivide = Button(calculatorWindow, text="/", padx=40, pady=20, command=divideButton)
 
 
 # grid section
