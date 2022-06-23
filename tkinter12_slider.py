@@ -4,7 +4,7 @@ from PIL import ImageTk, Image
 rootWindow = Tk()
 rootWindow.title("python logo")
 rootWindow.iconbitmap("images/favicon.ico")
-rootWindow.geometry("300x300") # window size
+rootWindow.geometry("500x500") # window size
 
 def resizeWindow():
     labelSlide = Label(rootWindow, text="v: " + str(verticalScale.get()) + " h: " + str(horizontalScale.get())).pack()
